@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const Template = (props) => {
-console.log(props.t)
+
 		return (
-<li key={props.text}>{props.text}</li>
+<li key={props.task}>{props.task}</li>
 		)
 }
 

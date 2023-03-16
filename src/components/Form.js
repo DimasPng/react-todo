@@ -30,9 +30,9 @@ export const Form = (props) => {
 									<div className="todo__list" id={`list__${props.id}`}>
 											{/* начиная с тега ul не работает нормально нужно разбираться */}
 											<ul>
-											{dateLS.map((item) => (
+											{dateLS ? dateLS.map((item) => (
 																	<Template id={item.id} task={item.task} priority={item.priority} status={item.status}/>
-														))
+														)) : 2+1.
 											}
 											</ul>
 											<Alert/>
