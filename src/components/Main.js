@@ -1,9 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Form} from './Form';
 import {FinishTasks} from './FinishTasks';
 
+export const Main = () => {
+		const [inputHigh, setInputHigh] = useState('')
+		const [inputLow, setInputLow] = useState('')
 
-export const Main = (props) => {
+		const [tasks, setTasks] = useState([])
+
+		const addTodo = (todo) => {
+				setTasks([...tasks, todo])
+		}
+
+		const dataLs = JSON.parse(localStorage.getItem('tasks'))
+
+		useEffect(() => {
+				if (!dataLs)
+				localStorage.setItem('tasks', JSON.stringify(tasks))
+		}, [tasks])
+
+		const dataFilter = (status) => {
+				return dataLs.filter(item => item.priority === status)
+		}
 
 		return (
 					<main className="page">
@@ -11,15 +29,16 @@ export const Main = (props) => {
 									<div className="todo__container">
 											<div className="todo__block">
 													<Form id={'high'}
-													      input={props.inputHigh}
-													      setInput={props.setInputHigh}
-													      addTodo={props.addTodo}
+													      input={inputHigh}
+													      setInput={setInputHigh}
+													      addTodo={addTodo}
+													      data = {dataFilter('high')}
 													/>
-
 													<Form id={'low'}
-													      input={props.inputLow}
-													      setInput={props.setInputLow}
-													      addTodo={props.addTodo}
+													      input={inputLow}
+													      setInput={setInputLow}
+													      addTodo={addTodo}
+													      data={dataFilter('low')}
 													/>
 											</div>
 									</div>

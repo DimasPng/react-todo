@@ -66,6 +66,7 @@ ul li {
   justify-content: center;
   align-items: center;
   background-color: grey;
+  height: 100vh;
 }
 
 
@@ -256,7 +257,7 @@ ul li {
 
 .finishedTasksPreview_header {
   position: absolute;
-  top: 125px;
+  top: 245px;
   font-size: 18px;
   writing-mode: vertical-rl;
   background-color: white;
